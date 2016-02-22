@@ -1,17 +1,22 @@
 {
-    "name": "roundpartner/iftttservice",
-    "description": "IFTTT Maker Integration",
-    "require": {
-        "guzzlehttp/guzzle": "^6.1"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^4.8"
-    },
-    "authors": [
-        {
-            "name": "Tom Lorentsen",
-            "email": "tom@thomaslorentsen.co.uk"
-        }
-    ],
-    "minimum-stability": "stable"
+  "name": "roundpartner/iftttservice",
+  "description": "IFTTT Maker Integration",
+  "require": {
+    "guzzlehttp/guzzle": "^6.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.8"
+  },
+  "authors": [
+    {
+      "name": "Tom Lorentsen",
+      "email": "tom@thomaslorentsen.co.uk"
+    }
+  ],
+  "autoload": {
+    "psr-0": {
+      "Maker": "src/"
+    }
+  },
+  "minimum-stability": "stable"
 }
