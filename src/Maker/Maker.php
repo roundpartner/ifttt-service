@@ -13,14 +13,21 @@ class Maker
 {
 
     /**
+     * @var string
+     */
+    protected $apiKey;
+
+    /**
      * @var Client;
      */
     protected $client;
 
     /**
      * Maker constructor.
+     *
+     * @param string $apiKey
      */
-    public function __construct()
+    public function __construct($apiKey)
     {
         $this->setClient(new Client());
     }
@@ -37,13 +44,16 @@ class Maker
 
     /**
      * @param string $event
-     * @param string $apiKey
      * @return bool
      */
-    public function trigger($event, $apiKey)
+    public function trigger($event, $value1 = null, $value2 = null, $value3 = null)
     {
-        $url = sprintf('https://maker.ifttt.com/trigger/%s/with/key/%s', $event, $apiKey);
-        $response = $this->client->request('PUT', $url, ['json' => ['value1' => 'hello world']]);
+        $url = sprintf('https://maker.ifttt.com/trigger/%s/with/key/%s', $event, $this->apiKey);
+        $response = $this->client->request('PUT', $url, ['json' => [
+            'value1' => $value1,
+            'value2' => $value2,
+            'value3' => $value3,
+        ]]);
         return $response->getStatusCode() === 200;
     }
 

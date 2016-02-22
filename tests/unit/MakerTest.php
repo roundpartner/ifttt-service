@@ -17,9 +17,9 @@ class MakerTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue($response));
 
 
-        $maker = new \Maker\Maker();
+        $maker = new \Maker\Maker('anyapikeyiwant');
         $maker->setClient($mock);
-        $this->assertTrue($maker->trigger('myevent', 'anyapikeyiwant'));
+        $this->assertTrue($maker->trigger('myevent'));
     }
 
 }
