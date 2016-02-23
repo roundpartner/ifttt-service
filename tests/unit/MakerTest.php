@@ -13,8 +13,9 @@ class MakerTest extends PHPUnit_Framework_TestCase
         $mock = $this->getMockBuilder('Client')
             ->setMethods(['request'])
             ->getMock();
-        $mock->expects($this->any())
+        $mock->expects($this->once())
             ->method('request')
+            ->with('PUT', 'https://maker.ifttt.com/trigger/roundpartner/with/key/anykey')
             ->will($this->returnValue($response));
 
         $maker = new \Maker\Maker('anykey');

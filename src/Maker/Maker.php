@@ -12,6 +12,8 @@ use GuzzleHttp\Client;
 class Maker
 {
 
+    const DEFAULT_MAKER_URL = 'https://maker.ifttt.com/trigger/%s/with/key/%s';
+
     /**
      * @var string
      */
@@ -53,7 +55,7 @@ class Maker
      */
     public function trigger($event, $value1 = null, $value2 = null, $value3 = null)
     {
-        $url = sprintf('https://maker.ifttt.com/trigger/%s/with/key/%s', $event, $this->apiKey);
+        $url = sprintf(self::DEFAULT_MAKER_URL, $event, $this->apiKey);
         $response = $this->client->request('PUT', $url, ['json' => [
             'value1' => $value1,
             'value2' => $value2,
