@@ -55,18 +55,50 @@ class Maker
      */
     public function trigger($event, $value1 = null, $value2 = null, $value3 = null)
     {
-        $url = sprintf(self::DEFAULT_MAKER_URL, $event, $this->apiKey);
-        $response = $this->client->request('PUT', $url, ['json' => [
-            'value1' => $value1,
-            'value2' => $value2,
-            'value3' => $value3,
-        ]]);
+        $json = $this->buildValuesArray($value1, $value2, $value3);
+        $options = ['json' => $json];
+        return $this->request($event, $options);
+    }
+
+    /**
+     * @param string $event
+     * @param array $options
+     * @return bool
+     */
+    private function request($event, $options)
+    {
+        $response = $this->client->request('PUT', $this->buildUrl($event), $options);
         if ($response->getStatusCode() === 200) {
             if ($response->getBody()->getContents() === "Congratulations! You've fired the {$event} event") {
                 return true;
             }
         }
         return false;
+    }
+
+    /**
+     * @param string $event
+     * @return string
+     */
+    private function buildUrl($event)
+    {
+        return sprintf(self::DEFAULT_MAKER_URL, $event, $this->apiKey);
+    }
+
+    /**
+     * @param string $value1
+     * @param string $value2
+     * @param string $value3
+     * @return array
+     */
+    private function buildValuesArray($value1 = null, $value2 = null, $value3 = null)
+    {
+        $values = [
+            'value1' => $value1,
+            'value1' => $value2,
+            'value1' => $value3,
+        ];
+        return array_filter($values);
     }
 
 }
