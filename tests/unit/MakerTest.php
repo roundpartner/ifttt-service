@@ -4,6 +4,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
+use Maker\Maker;
 
 /**
  * Class MakerTest
@@ -13,14 +14,14 @@ class MakerTest extends PHPUnit_Framework_TestCase
 
     public function testTrigger()
     {
-        $responseBody = "Congratulations! You've fired the roundpartner event";
+        $responseBody = "Congratulations! You've fired the example event";
         $response = new Response(200, [], $responseBody);
         $mock = new MockHandler([$response]);
         $handler = HandlerStack::create($mock);
         $client = new Client(['handler' => $handler]);
-        $maker = new \Maker\Maker('anykey');
+        $maker = new Maker('anykey');
         $maker->setClient($client);
-        $this->assertTrue($maker->trigger('roundpartner'));
+        $this->assertTrue($maker->trigger('example'));
     }
 
 }
