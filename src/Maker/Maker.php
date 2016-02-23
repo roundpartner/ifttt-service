@@ -30,6 +30,7 @@ class Maker
     public function __construct($apiKey)
     {
         $this->setClient(new Client());
+        $this->apiKey = $apiKey;
     }
 
     /**
@@ -44,6 +45,10 @@ class Maker
 
     /**
      * @param string $event
+     * @param string $value1
+     * @param string $value2
+     * @param string $value3
+     *
      * @return bool
      */
     public function trigger($event, $value1 = null, $value2 = null, $value3 = null)
@@ -54,7 +59,12 @@ class Maker
             'value2' => $value2,
             'value3' => $value3,
         ]]);
-        return $response->getStatusCode() === 200;
+        if ($response->getStatusCode() === 200) {
+            if ($response->getBody()->getContents() === "Congratulations! You've fired the {$event} event") {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
