@@ -95,8 +95,8 @@ class Maker
     {
         $values = [
             'value1' => $value1,
-            'value1' => $value2,
-            'value1' => $value3,
+            'value2' => $value2,
+            'value3' => $value3,
         ];
         return array_filter($values);
     }
