@@ -12,7 +12,15 @@ use Maker\Maker;
 class MakerTest extends PHPUnit_Framework_TestCase
 {
 
-    public function testTrigger()
+    /**
+     * @var Maker
+     */
+    protected $maker;
+
+    /**
+     * Set up tests
+     */
+    public function setUp()
     {
         $responseBody = "Congratulations! You've fired the example event";
         $response = new Response(200, [], $responseBody);
@@ -21,7 +29,15 @@ class MakerTest extends PHPUnit_Framework_TestCase
         $client = new Client(['handler' => $handler]);
         $maker = new Maker('anykey');
         $maker->setClient($client);
-        $this->assertTrue($maker->trigger('example'));
+        $this->maker = $maker;
+    }
+
+    /**
+     * Test trigger
+     */
+    public function testTrigger()
+    {
+        $this->assertTrue($this->maker->trigger('example'));
     }
 
 }
