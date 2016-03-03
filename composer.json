@@ -1,5 +1,5 @@
 {
-  "name": "roundpartner/iftttservice",
+  "name": "roundpartner/ifttt-service",
   "description": "IFTTT Maker Integration",
   "require": {
     "guzzlehttp/guzzle": "^6.1"
