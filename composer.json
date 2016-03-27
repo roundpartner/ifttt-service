@@ -5,6 +5,7 @@
     "guzzlehttp/guzzle": "^6.1"
   },
   "require-dev": {
+    "squizlabs/php_codesniffer": "2.*",
     "phpunit/phpunit": "^4.8"
   },
   "authors": [

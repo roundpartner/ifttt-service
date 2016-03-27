@@ -63,6 +63,7 @@ class Maker
     /**
      * @param string $event
      * @param array $options
+     *
      * @return bool
      */
     private function request($event, $options)
@@ -78,6 +79,7 @@ class Maker
 
     /**
      * @param string $event
+     *
      * @return string
      */
     private function buildUrl($event)
@@ -89,6 +91,7 @@ class Maker
      * @param string $value1
      * @param string $value2
      * @param string $value3
+     *
      * @return array
      */
     private function buildValuesArray($value1 = null, $value2 = null, $value3 = null)
@@ -100,5 +103,4 @@ class Maker
         ];
         return array_filter($values);
     }
-
 }
