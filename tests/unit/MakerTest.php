@@ -39,5 +39,4 @@ class MakerTest extends PHPUnit_Framework_TestCase
     {
         $this->assertTrue($this->maker->trigger('example'));
     }
-
 }
