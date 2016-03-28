@@ -15,8 +15,8 @@
     }
   ],
   "autoload": {
-    "psr-0": {
-      "Maker": "src/"
+    "psr-4": {
+      "RoundPartner\\": "src/"
     }
   },
   "minimum-stability": "stable"

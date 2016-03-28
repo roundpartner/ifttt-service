@@ -1,6 +1,6 @@
 <?php
 
-namespace Maker;
+namespace RoundPartner\Maker;
 
 use GuzzleHttp\Client;
 

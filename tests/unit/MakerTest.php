@@ -4,7 +4,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Maker\Maker;
+use RoundPartner\Maker\Maker;
 
 /**
  * Class MakerTest
