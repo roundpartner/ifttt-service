@@ -1,8 +1,16 @@
-# iftttservice
-IFTTT Maker Integration
+# IFTTT Maker
 
+Integrates into IFTTT Maker to trigger events
+
+## Usage
+
+```php
+$maker = new Maker($apiKey);
+$maker->trigger('event_name', 'value1', 'value2', 'value3');
+```
 
 ## Testing
+
 ```bash
 cd tests
 phpunit
