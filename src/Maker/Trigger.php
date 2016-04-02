@@ -54,16 +54,16 @@ class Trigger
     }
     
     /**
-     * @param string $event
+     * @param Request $request
      * @param array $options
      *
      * @return bool
      */
-    private function request($event, $options)
+    private function request(Request $request, $options)
     {
-        $response = $this->client->request('PUT', $this->buildUrl($event), $options);
+        $response = $this->client->request('PUT', $this->buildUrl($request->event), $options);
         if ($response->getStatusCode() === 200) {
-            if ($response->getBody()->getContents() === "Congratulations! You've fired the {$event} event") {
+            if ($response->getBody()->getContents() === "Congratulations! You've fired the {$request->event} event") {
                 return true;
             }
         }
