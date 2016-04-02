@@ -3,6 +3,7 @@
 namespace RoundPartner\Maker;
 
 use GuzzleHttp\Client;
+use RoundPartner\Maker\Entity\Request;
 
 /**
  * Class Maker
@@ -53,6 +54,11 @@ class Maker
      */
     public function trigger($event, $value1 = null, $value2 = null, $value3 = null)
     {
-        return $this->trigger->trigger($event, $value1, $value2, $value3);
+        $request = new Request();
+        $request->event = $event;
+        $request->value1 = $value1;
+        $request->value2 = $value2;
+        $request->value3 = $value3;
+        return $this->trigger->trigger($request);
     }
 }

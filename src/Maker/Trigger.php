@@ -3,6 +3,7 @@
 namespace RoundPartner\Maker;
 
 use GuzzleHttp\ClientInterface;
+use RoundPartner\Maker\Entity\Request;
 
 class Trigger
 {
@@ -41,18 +42,15 @@ class Trigger
     }
     
     /**
-     * @param string $event
-     * @param string $value1
-     * @param string $value2
-     * @param string $value3
+     * @param Request $request
      *
      * @return bool
      */
-    public function trigger($event, $value1 = null, $value2 = null, $value3 = null)
+    public function trigger(Request $request)
     {
-        $json = $this->buildValuesArray($value1, $value2, $value3);
+        $json = $this->buildValuesArray($request);
         $options = ['json' => $json];
-        return $this->request($event, $options);
+        return $this->request($request->event, $options);
     }
     
     /**
@@ -83,18 +81,16 @@ class Trigger
     }
 
     /**
-     * @param string $value1
-     * @param string $value2
-     * @param string $value3
+     * @param Request $request
      *
      * @return array
      */
-    private function buildValuesArray($value1 = null, $value2 = null, $value3 = null)
+    private function buildValuesArray(Request $request)
     {
         $values = [
-            'value1' => $value1,
-            'value2' => $value2,
-            'value3' => $value3,
+            'value1' => $request->value1,
+            'value2' => $request->value2,
+            'value3' => $request->value3,
         ];
         return array_filter($values);
     }
