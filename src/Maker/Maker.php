@@ -36,6 +36,7 @@ class Maker
 
     /**
      * @param \GuzzleHttp\ClientInterface $client
+     *
      * @return Maker
      */
     public function setClient($client)
@@ -60,5 +61,28 @@ class Maker
         $request->value2 = $value2;
         $request->value3 = $value3;
         return $this->trigger->trigger($request);
+    }
+
+    /**
+     * @param string $event
+     * @param string $value1
+     * @param string $value2
+     * @param string $value3
+     *
+     * @return bool
+     */
+    public function triggerAsync($event, $value1 = null, $value2 = null, $value3 = null)
+    {
+        $request = new Request();
+        $request->event = $event;
+        $request->value1 = $value1;
+        $request->value2 = $value2;
+        $request->value3 = $value3;
+        try {
+            $this->trigger->triggerAsync($request);
+        } catch (\Exception $exception) {
+            return false;
+        }
+        return true;
     }
 }

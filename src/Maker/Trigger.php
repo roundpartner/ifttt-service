@@ -3,6 +3,7 @@
 namespace RoundPartner\Maker;
 
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Promise\PromiseInterface;
 use RoundPartner\Maker\Entity\Request;
 
 class Trigger
@@ -34,6 +35,7 @@ class Trigger
 
     /**
      * @param ClientInterface $client
+     *
      * @return Maker
      */
     public function setClient(ClientInterface $client)
@@ -50,7 +52,19 @@ class Trigger
     {
         $json = $this->buildValuesArray($request);
         $options = ['json' => $json];
-        return $this->request($request->event, $options);
+        return $this->request($request, $options);
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return PromiseInterface
+     */
+    public function triggerAsync(Request $request)
+    {
+        $json = $this->buildValuesArray($request);
+        $options = ['json' => $json];
+        return $this->requestAsync($request, $options);
     }
     
     /**
@@ -68,6 +82,17 @@ class Trigger
             }
         }
         return false;
+    }
+
+    /**
+     * @param Request $request
+     * @param array $options
+     *
+     * @return PromiseInterface
+     */
+    private function requestAsync(Request $request, $options)
+    {
+        return $this->client->requestAsync('PUT', $this->buildUrl($request->event), $options);
     }
 
     /**

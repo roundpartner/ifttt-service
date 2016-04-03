@@ -45,7 +45,6 @@ class MakerTest extends PHPUnit_Framework_TestCase
      */
     public function testTriggerAsync()
     {
-        $this->markTestIncomplete();
         $this->assertTrue($this->maker->triggerAsync('example'));
     }
 }
