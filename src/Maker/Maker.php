@@ -3,6 +3,7 @@
 namespace RoundPartner\Maker;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Promise\PromiseInterface;
 use RoundPartner\Maker\Entity\Request;
 
 /**
@@ -24,6 +25,11 @@ class Maker
     protected $trigger;
 
     /**
+     * @var PromiseInterface[]
+     */
+    protected $promises;
+
+    /**
      * Maker constructor.
      *
      * @param string $apiKey
@@ -32,6 +38,7 @@ class Maker
     {
         $this->trigger = new Trigger($apiKey, new Client());
         $this->apiKey = $apiKey;
+        $this->promises = array();
     }
 
     /**
@@ -79,10 +86,17 @@ class Maker
         $request->value2 = $value2;
         $request->value3 = $value3;
         try {
-            $this->trigger->triggerAsync($request);
+            $this->promises[] = $this->trigger->triggerAsync($request);
         } catch (\Exception $exception) {
             return false;
         }
         return true;
+    }
+
+    public function __destruct()
+    {
+        foreach ($this->promises as $promise) {
+            $promise->wait();
+        }
     }
 }
