@@ -96,7 +96,9 @@ class Maker
     public function __destruct()
     {
         foreach ($this->promises as $promise) {
-            $promise->wait();
+            if ($promise->getState() === PromiseInterface::PENDING) {
+                $promise->wait();
+            }
         }
     }
 }
