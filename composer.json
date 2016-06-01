@@ -19,5 +19,10 @@
       "RoundPartner\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "RoundPartner\\Tests\\": "tests/"
+    }
+  },
   "minimum-stability": "stable"
 }

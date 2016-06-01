@@ -1,5 +1,7 @@
 <?php
 
+namespace RoundPartner\Tests;
+
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -9,7 +11,7 @@ use RoundPartner\Maker\Maker;
 /**
  * Class MakerTest
  */
-class MakerTest extends PHPUnit_Framework_TestCase
+class MakerTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
