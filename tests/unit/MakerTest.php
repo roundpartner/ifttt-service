@@ -1,6 +1,6 @@
 <?php
 
-namespace RoundPartner\Tests;
+namespace RoundPartner\Test;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;

@@ -16,12 +16,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "RoundPartner\\Maker\\": "src/"
+      "RoundPartner\\Maker\\": "src/Maker/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "RoundPartner\\Tests\\": "tests/"
+      "RoundPartner\\Test\\": "tests/"
     }
   },
   "minimum-stability": "stable"
