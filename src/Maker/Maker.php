@@ -4,7 +4,6 @@ namespace RoundPartner\Maker;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Promise\PromiseInterface;
-use RoundPartner\Maker\Entity\Request;
 
 /**
  * Class Maker
