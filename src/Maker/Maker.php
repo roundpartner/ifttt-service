@@ -62,7 +62,7 @@ class Maker
      */
     public function trigger($event, $value1 = null, $value2 = null, $value3 = null)
     {
-        $request = Request::factory($event, $value1, $value2, $value3);
+        $request = RequestFactory::factory($event, $value1, $value2, $value3);
         return $this->trigger->trigger($request);
     }
 
@@ -76,7 +76,7 @@ class Maker
      */
     public function triggerAsync($event, $value1 = null, $value2 = null, $value3 = null)
     {
-        $request = Request::factory($event, $value1, $value2, $value3);
+        $request = RequestFactory::factory($event, $value1, $value2, $value3);
         try {
             $this->promises[] = $this->trigger->triggerAsync($request);
         } catch (\Exception $exception) {
