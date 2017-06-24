@@ -10,17 +10,17 @@ class Request
     public $event;
 
     /**
-     * @var mixed
+     * @var string
      */
     public $value1;
-    
+
     /**
-     * @var mixed
+     * @var string
      */
     public $value2;
 
     /**
-     * @var mixed
+     * @var string
      */
     public $value3;
 
