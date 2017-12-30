@@ -8,7 +8,7 @@ $maker->trigger('event_name', 'value1', 'value2', 'value3');
 ```
 ## Testing
 ```bash
-phpunit
+vendor/bin/phpunit
 ```
 ## Code Quality
 ```bash
